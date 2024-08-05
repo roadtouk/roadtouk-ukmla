@@ -15,5 +15,5 @@ export const menu = [
 		href: 'https://roadtouk.com/writing-services'
 	},
 	{ name: 'UKMLA', icon: Ukmla, href: 'https://ukmla.roadtouk.com' },
-	{ name: 'About Us', icon: About, href: 'https://roadtouk.com' }
+	{ name: 'About Us', icon: About, href: 'https://roadtouk.com/about-us' }
 ];

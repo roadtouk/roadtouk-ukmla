@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button';
 	import ArrowRight from '~icons/mdi/arrow-right';
+	import CaretRight from '~icons/ph/caret-right-bold';
 	import { tiers } from '$lib/data/tiers';
 	import { features } from '$lib/data/mocks';
 	import { faqs } from '$lib/data/faqs';
@@ -8,6 +9,9 @@
 	import Check from '~icons/material-symbols/check';
 	import * as Accordion from '$lib/components/ui/accordion';
 	import * as Carousel from '$lib/components/ui/carousel/index';
+	import Autoplay from 'embla-carousel-autoplay';
+
+	const autoplayPlugin = Autoplay({ delay: 4000, stopOnInteraction: true });
 </script>
 
 <!-- Hero -->
@@ -62,8 +66,10 @@
 					</span>
 				</a>
 			</div>
-			<h1 class="mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-				Introducing the Ultimate UKMLA Qbank.
+			<h1
+				class="mt-10 max-w-64 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl md:max-w-none"
+			>
+				Introducing the Ultimate <span class="text-indigo-600">UKMLA</span> Qbank.
 			</h1>
 			<p class="mt-6 text-gray-600 md:text-lg md:leading-7">
 				Are you ready to ace the UKMLA and start your medical career in the NHS? With thousands of
@@ -71,9 +77,13 @@
 				that you'll be prepared come exam day.
 			</p>
 			<div class="mt-10 flex items-center gap-x-4">
-				<Button href="https://app.roadtouk.com/signup">Free Trial Now</Button>
-				<Button href="https://t.me/ukmlaQbank" variant="outline"
-					>Join Group <ArrowRight class="ms-2 h-4 w-4" /></Button
+				<Button href="https://app.roadtouk.com/signup" class="bg-orange-600 hover:bg-orange-800"
+					>Free Trial Now</Button
+				>
+				<Button href="https://t.me/ukmlaQbank" variant="outline" class="group"
+					>Join Group <CaretRight
+						class="ms-2 h-4 w-4 group-hover:translate-x-1 group-hover:duration-200"
+					/></Button
 				>
 			</div>
 		</div>
@@ -117,17 +127,21 @@
 		</div>
 	</div>
 	<div class="relative overflow-hidden pt-16">
-		<div class="mx-auto max-w-7xl px-6 lg:px-8">
-			<Carousel.Root class="w-full" opts={{ loop: true }}>
+		<div class="mx-auto max-w-5xl px-6 lg:px-8">
+			<Carousel.Root
+				class="w-full"
+				opts={{ loop: true }}
+				plugins={[autoplayPlugin]}
+				on:mousenter={autoplayPlugin.stop}
+				on:mouseleave={autoplayPlugin.reset}
+			>
 				<Carousel.Content>
 					{#each images as image}
 						<Carousel.Item>
-							<img src={image.original} alt={image.originalAlt} />
+							<img src={image.original} alt={image.originalAlt} class="w-full" />
 						</Carousel.Item>
 					{/each}
 				</Carousel.Content>
-				<Carousel.Previous />
-				<Carousel.Next />
 			</Carousel.Root>
 		</div>
 	</div>
@@ -182,7 +196,7 @@
 							</h3>
 							{#if tier.mostPopular}
 								<p
-									class="rounded-full bg-indigo-600/10 px-2.5 py-1 text-xs font-semibold leading-5 text-indigo-600"
+									class="rounded-full bg-orange-600/10 px-2.5 py-1 text-xs font-semibold leading-5 text-orange-600"
 								>
 									Most popular
 								</p>
@@ -204,9 +218,10 @@
 						</ul>
 					</div>
 					<Button
-						class="mt-8"
-						href="https://app.roadtouk.com/signup"
-						color={tier.mostPopular ? 'blue' : 'light'}>Get Started</Button
+						class="mt-8 {tier.mostPopular
+							? 'bg-orange-600 hover:bg-orange-800'
+							: 'bg-indigo-600 hover:bg-indigo-800'}"
+						href="https://app.roadtouk.com/signup">Get Started</Button
 					>
 				</div>
 			{/each}
@@ -236,7 +251,7 @@
 								<dt class="inline font-semibold text-gray-900">
 									<svelte:component
 										this={feature.icon}
-										class="absolute left-1 top-1 h-5 w-5 text-indigo-600"
+										class="absolute left-1 top-1 h-5 w-5 text-orange-600"
 									/>
 
 									{feature.name}
@@ -247,8 +262,12 @@
 							</div>
 						{/each}
 					</dl>
-					<Button href="https://app.roadtouk.com/user/qbank/mock" class="mt-8" color="blue"
-						>Take me There <ArrowRight class="ms-2 h-5 w-5" /></Button
+					<Button
+						href="https://app.roadtouk.com/user/qbank/mock"
+						class="group mt-8 bg-orange-600 hover:bg-orange-800"
+						>Take me There <CaretRight
+							class="ms-2 h-4 w-4 group-hover:translate-x-1 group-hover:duration-200"
+						/></Button
 					>
 				</div>
 			</div>
@@ -282,7 +301,7 @@
 			<div class="mt-10 flex items-center justify-center gap-x-6">
 				<a
 					href="https://app.roadtouk.com/signup"
-					class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+					class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-indigo-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
 					>Create an account</a
 				>
 				<a href="https://t.me/ukmlaQbank" class="text-sm font-semibold leading-6 text-white"
@@ -303,7 +322,7 @@
 				/>
 				<defs>
 					<radialGradient id="827591b1-ce8c-4110-b064-7cb85a0b1217">
-						<stop stop-color="#7775D6" />
+						<stop stop-color="#EA580C" />
 						<stop offset="1" stop-color="#E935C1" />
 					</radialGradient>
 				</defs>

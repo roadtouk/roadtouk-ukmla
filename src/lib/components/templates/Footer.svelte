@@ -8,11 +8,11 @@
 	let services = [
 		{
 			name: 'Sessions',
-			href: 'https://shop.roadtouk.com/collections/all'
+			href: 'https://roadtouk.com/sessions'
 		},
 		{
 			name: 'Writing',
-			href: 'https://shop.roadtouk.com/collections/professional-writing-service'
+			href: 'https://roadtouk.com/writing-services'
 		},
 		{
 			name: 'Courses',
@@ -118,13 +118,13 @@
 						<ul role="list" class="mt-6 space-y-4">
 							<li>
 								<a
-									href="https://shop.roadtouk.com"
+									href="https://roadtouk.com/about-us"
 									class="text-sm leading-6 text-gray-600 hover:text-gray-900">About</a
 								>
 							</li>
 							<li>
 								<a
-									href="https://roadtouk.com/blog/"
+									href="https://roadtouk.com/blog"
 									class="text-sm leading-6 text-gray-600 hover:text-gray-900">Blog</a
 								>
 							</li>
@@ -147,7 +147,7 @@
 							</li>
 							<li>
 								<a
-									href="https://roadtouk.com/new-privacy-policy/"
+									href="https://roadtouk.com/privacy-policy/"
 									class="text-sm leading-6 text-gray-600 hover:text-gray-900">Privacy</a
 								>
 							</li>
